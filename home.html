@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>个人主页</title>
+	<!-- 首次使用Javascript  （目前所有浏览器和Html5都默认使用JS脚本语言，所有少了一句：type="text/javascript"）-->
+	<script>
+		alert("alert的一个JS");
+		document.write("<h1 style='text-align:center'>登录界面</h1>")
+	</script>
+
+</head>
+<body background="yello">
+	<form method="post" action="owner.html">
+		<!-- 带上边框 -->
+		<fieldset>
+			<!-- 为边框加标题 -->
+			<legend>个人登录信息</legend>
+			<!-- 登录用户名和密码等信息 -->
+			<label for="username"><b>用户名：</b></label>
+			<input type="text" name="username" id="username" value=""/>
+			<br>
+			<label for="pass">密码：</label>
+			<input type="password" name="pass" id="pass" value=""/>
+			<!--提交表单的密钥对生成器字段：提交表单时，私钥存在本地，公钥发服务器 (IE不支持)-->
+			<keygen name="security">
+				<br>
+				<!-- 单选 -->
+				性别：<input type="radio" name="sex"	value="male">男
+				<input type="radio" name="sex" value="female">女<br>
+
+				<!-- 复选 -->
+				爱好：<br>
+				<input type="checkbox" name="hobit" value="sports">运动<br>
+				<input type="checkbox" name="hobit" value="IT">编程<br>
+				<input type="checkbox" name="hobit" value="music">音乐<br>
+				学龄：<br>
+				<br>
+				<!-- 下拉列表与选项组 -->
+				选择紧急联系人：
+				<select >
+					<optgroup label="我的宿友">
+						<option value="xiaohong">小洪</option>
+						<option value="junbang">俊邦</option>
+					</optgroup>
+					<optgroup label="我的家人">
+						<option value="mom">妈妈</option>
+						<option value="wife">潘潘宝</option>
+					</optgroup>
+				</select><br>
+				个人介绍：
+				<textarea name="personal_introduction" rows="3" cols="30">
+					请填写你的个人介绍。
+				</textarea><br>
+				<!-- 按钮 -->
+				<button type="button">点我！</button><br>
+				<!-- 新标签：文本框下拉 （input 的list属性）-->
+				正在使用的浏览器是：
+				<input type="text" name="using_browser" list="browsers">
+				<!-- 注意：IE9以前 和 Safari 都是不支持 datalist的 -->
+				<datalist id="browsers">
+					<option value="IE"></option>
+					<option value="FireFox"></option>
+					<option value="Chrome"></option>
+					<option value="Safari"></option>
+				</datalist>
+				<!-- 表单的提交和重置 -->
+				<input type="submit" value="确定" name="submit"/>
+				<input type="reset" value="取消" name="reset"/>
+			</fieldset>
+		</form>
+
+		<!-- 定义输出 -->
+		<form oninput="x.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)">
+		大学/大专：2<input type="range" min="2" max="4" id="c" value="4">4
+			高中/中专：2<input type="range" min="2" max="4" id="b" value="3">4
+			初中：<input type="number" min="0" max="3" id="a" value="3">
+			总共是：<output name="x" for="a b c"></output>
+		</form>
+
+	</body>
+	</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test</title>
+</head>
+<body>
+	<div id="div1">aaa</div>
+	<div id="div2">bbb</div>
+	<div id="div3">ccc</div>
+	<script src="test.js"></script>
+	<script type="text/javascript">
+		function Computer(brand, cpu){
+			this.brand = brand;
+			cpu = +cpu;
+			if(isNaN(cpu))cpu = 4;
+			this.cpu = cpu;
+		}
+
+		Computer.prototype.CPU_BRAND = "Intel";
+		Computer.prototype.KIND  = "LapTop";
+		Computer.prototype.OS = "windows";
+
+		function MacOS(cpu, storage){
+			Computer.call(this, "苹果",cpu);
+			this.storage  = storage;
+			this.OS = "MacOS";
+		}
+		MacOS.prototype = Object.create(Computer.prototype);
+		MacOS.prototype.constructor = MacOS;
+		MacOS.prototype.info = function(){
+			console.log("这是"+this.brand+",CPU型号是"+this.CPU_BRAND+","+this.cpu+"核,容量是"+this.storage+",操作系统是："+this.KIND);
+		};
+
+		
+
+	</script>
+</body>
+</html>

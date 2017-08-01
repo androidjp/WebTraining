@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- 描述了基本的链接地址/链接目标，该标签作为HTML文档中所有的链接标签的默认链接 -->
+	<base href="http://www.jianshu.com/users/34eadc1d5303/latest_articles" target="_blank">
+	<style type="text/css">
+		body {text-align: center;}
+		.a_class_no_underline{
+			text-decoration:none;
+		}
+	</style>
+	<link rel="stylesheet" type="text/css" href="common_style.css">
+	<!-- 默认的 meta，表示默认编码格式 -->
+	<meta charset="utf-8">
+	<!-- 定义网页描述 -->
+	<meta name="description" content="吴骏鹏的个人主页">
+	<!-- 作者 -->
+	<meta name="author" content="吴骏鹏">
+	<!-- 每30s，刷新一次页面 -->
+	<meta http-equiv="refresh" content="30">
+	<title>吴骏鹏--个人主页</title>
+
+	<!-- JavaScript 链接 -->
+	<script src="./js/home.js"></script>
+</head>
+<body>
+	<!-- 个人基本信息 -->
+	<img src="http://p1.bpimg.com/567571/87991e7c3acafa56.jpg" width="200" height="200"/>
+	<h1>吴骏鹏</h1>
+	<p>华南农业大学 软件工程</p>
+	<p>email: 1049578026@qq.com</p>
+	<p>phone-number: 18814127240</p>
+	<p>major: Android、Java Web、Web前端</p>
+	<p>我的简书首页：<a href="http://www.jianshu.com/users/34eadc1d5303/latest_articles" target="_blank" id="link_to_jianshu">简书、androidjp</a>，
+		<input type="button" name="btn_jianshu" value="跳转到简书首页" onclick="browse('https://www.jianshu.com/')">
+	</p>
+	<p>GPA:<sub>5.00</sub><sup style="margin:0 0 0 -25px">3.94</sup></p>
+	<!-- 个人学历信息等 -->
+	---------------------------------------------
+	<h2>学历信息</h2>
+	<pre>
+		2013年9月-2017年7月：       华南农业大学     软件工程 2班
+		2010年9月-2013年6月：       东莞高级中学     20班
+		2007年9月-2010年6月： 	   樟木头中学      10班
+	</pre>
+	<p>俗话说得好：<q>我不爱你，谁爱你</q>，所以，我们要努力！</p>，<i>我会继续好好写<a href="#link_to_jianshu" class="a_class_no_underline">简书</a></i>
+
+	<caption><h2>项目与奖项</h2></caption>
+	<table border="1" cellpadding="6" cellspacing="6">
+		<colgroup>
+		<col span="2" style="background-color:yellow">
+		<col style="background-color:blue">
+	</colgroup>
+	<thead style="color:gray">
+		<tr>
+			<th>项目与获奖时间</th>
+			<th align="left">项目简介</th>
+			<th>扮演角色</th>
+		</tr>
+	</thead>
+	<tbody style="color:green">
+		<tr>
+			<td>2016.05-2016.08</td>
+			<td>AJB-优惠链App项目</td>
+			<td>辅助开发成员，Android研发成员</td>
+		</tr>
+		<tr>
+			<td>2016.01-2016.03</td>
+			<td>全民速送App</td>
+			<td>主力开发人员</td>
+		</tr>
+		<tr>
+			<td>2015.05-2015.09</td>
+			<td>施肥博士V1.0</td>
+			<td>主力Androidjp端开发成员</td>
+		</tr>
+
+		<tr>
+			<td>2016.12-2017</td>
+			<td>基于交互的智能交通理赔助手</td>
+			<td>开发者</td>
+		</tr>
+
+		<tr>
+			<td>2016.11-2016.12</td>
+			<td>基于图片分享的社交平台项目</td>
+			<td>主力开发者</td>
+		</tr>
+		<tr>
+			<td>2016.09-2016.09</td>
+			<td>基于Hook机制和动态加载技术的App生态圈项目--JPHome（初版完成，有bug）</td>
+			<td>开发者</td>
+		</tr>
+		<tr>
+			<td>2015</td>
+			<td>基于物质出借的秘书部物资管理系统--MMMS（未完成）</td>
+			<td>开发者</td>
+		</tr>
+		<tr>
+			<td>2013-2014</td>
+			<td colspan="2">校级三等奖学金</td>
+		</tr>
+		<tr>
+			<td>2014-2015</td>
+			<td colspan="2">校级三等奖学金</td>
+		</tr>
+		<tr>
+			<td>2014-2015</td>
+			<td colspan="2">校级阳光体育先进个人</td>
+		</tr>
+	</tbody>
+</table>
+
+<!-- 自定义列表 -->
+<h2>朋友评价</h2>
+<dl>
+	<dt>潘潘说：</dt>
+	<dd>-- 他是个上进的、值得托付的人。</dd>
+	<dt>小熊说：</dt>
+	<dd>-- 他是唯一一个能够击败我的男人！</dd>
+</dl>
+</body>
+</html>
