@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue-grammer</title>
+    <script src="./../vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+    
+</head>
+<body>
+    
+    <div id='app'>
+
+        <input type="text" name="" v-model="message" placeholder="请输入message">
+
+        <p>message: {{message}}</p>
+
+        <p v-once>一次性赋值数据: {{message}}</p>
+
+        <div v-html="rawHtml">
+        </div>
+
+        <div v-bind:id="dynamicId"></div>
+
+        <button v-bind:disabled="isButtonDisabled">Button</button>
+
+
+        <br>
+        <!-- 可以写：表达式 -->
+        表达式：{{ message.split('').reverse().join('------') }}
+        <br>
+        使用计算属性，同样行：{{reversedMessage}}
+        <br>
+        使用Math等全局变量的方式： {{Math.abs(-1)}}
+        <div v-bind:id="'list-' + id"></div>
+
+
+        <p v-if="seen">现在你看到我了</p>
+
+        <!-- v-bind可接受参数href,用于 key-value 的形式绑定 -->
+        <a v-bind:href="url_jianshu">我的简书主页</a><br>
+        <a v-on:click="clickLink">我是Link，要点我吗?</a>
+
+
+        <!-- '.' 后面带的是‘修饰符’，用于指出一个指令应该以特殊方式绑定 -->
+        <form v-on:submit.prevent="onSubmit"></form>
+        
+
+        <!-- 缩写 -->
+        <!-- v-bind:  To   : -->
+        <a :href="url_jianshu">我的简书主页</a><br>
+        <!-- v-on:  To  @ -->
+        <a @click="clickLink">我是Link，要点我吗?</a>
+
+        <div>{{}}</div>
+    </div>
+
+
+
+    <div id="fullNameTest">
+        firstName:<input type="text" name="" v-model="firstName">
+        <br>
+        lastName: <input type="text" name="" v-model="lastName">
+        <br>
+        <p>fullName: {{fullName}}</p>
+        <br>
+        fullName: <input type="text" name="" v-model="fullName">因为有setter方法，所以，能够反过来改变firstName和lastName
+    </div>
+
+
+    <div id="watch-example">
+        <p style="backgound-color:blue">
+            Ask a yes/no question:
+            <input v-model="question">
+          </p>
+          <p style="backgound-color:green">{{ answer }}</p>
+        
+
+    </div>
+
+    <script src="./grammer.js"></script>
+    <script src="./watcher.js"></script>
+</body>
+</html>
