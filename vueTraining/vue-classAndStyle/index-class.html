@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Usage-Class</title>
+    <script src="./../vue.js"></script>
+    <script src="./my-component.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <!-- 表示 active属性的更新，取决于 数据属性 isActive是否为true -->
+        <div v-bind:class="{active:isActive}"></div>
+
+        <div class="static" v-bind:class="[{active:isActive, 'text-danger':hasError}]"></div>
+
+        <div v-bind:class="classObject"></div>
+        
+        <div v-bind:class="[classObject,extraClassObject]"></div>
+
+        <my-component v-bind:class="{clazzD:isActive}"></my-component>
+    </div>
+
+    
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                isActive: true,
+                hasError: false,
+                error: {
+                    type: 'fatal',
+                    msg: 'Error, you are wrong'
+                }
+            },
+            computed: {
+                classObject: function () {
+                    return {
+                        active: this.isActive && !this.error,
+                        'text-danger': this.error && this.error.type === 'fatal'
+                    }
+                },
+                extraClassObject:function(){
+                    return 'mmmclass'
+                }
+            }
+        })
+
+    </script>
+
+</body>
+
+</html>
