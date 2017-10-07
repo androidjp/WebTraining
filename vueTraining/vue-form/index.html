@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 表单</title>
+    <script src="./../vue.js"></script>
+    <style>
+        p {
+            background-color: #D6A35B
+        }
+    </style>
+</head>
+
+<body>
+
+    <p>普通的双向绑定</p>
+    <div id="exp1">
+        结果：<span style="white-space: pre-line;">{{message}}</span>
+        <br> 输入：
+        <textarea v-model="message" placeholder="add sth"></textarea>
+        <br> 复选框：
+        <input type="checkbox" v-model="checked">
+        <label for="checkbox">{{checked}}</label>
+        <br>
+
+    </div>
+
+    <p>多个复选框</p>
+    <div id="exp2">
+        <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+        <label for="jack">Jack</label>
+        <br>
+        <input type="checkbox" id="tom" value="Tom" v-model="checkedNames">
+        <label for="tom">Tom</label>
+        <br>
+        <input type="checkbox" id="allen" value="Allen" v-model="checkedNames">
+        <label for="allen">Allen</label>
+        <br>
+        <span>Checked name: {{checkedNames}}</span>
+
+    </div>
+
+    <p>单选按钮</p>
+    <div id="exp3">
+        <input type="radio" id="one" value="One" v-model="picked">
+        <label for="one">One</label>
+        <br>
+        <input type="radio" id="two" value="Two" v-model="picked">
+        <label for="two">Two</label>
+        <br>
+        <span>Picked: {{ picked }}</span>
+
+    </div>
+
+    <p>选择列表</p>
+    <div id="exp4">
+        <h5>静态</h5>
+        <select v-model="selected">
+                    <option disabled value="">请选择</option>
+                    <option>A</option>
+                    <option>B</option>
+                    <option>C</option>
+                  </select>
+        <span>Selected: {{ selected }}</span>
+
+        <h5>动态</h5>
+
+        <select v-model="selected">
+
+        <option v-for="option in options" :value="option.value">
+            {{option.text}}
+        </option>
+        
+
+        </select>
+
+        <span>Selected:{{selected}}</span>
+    </div>
+
+
+    <p>值绑定</p>
+
+    <div id="exp5">
+        <input type="radio" v-model="picked" value="a">
+        <input type="checkbox" v-model="toggle">
+        <select v-model="selected">
+            <option value="abc">ABC</option>
+        </select>
+
+        <input type="checkbox" v-model="toggle" v-bind:true-value="a" v-bind:false-value="b">
+    </div>
+
+
+
+
+    <script>
+        var exp1 = new Vue({
+            el: '#exp1',
+            data: {
+                message: "",
+                checked: true
+            }
+        })
+
+        var exp2 = new Vue({
+            el: '#exp2',
+            data: {
+                checkedNames: []
+            }
+        })
+
+        var exp3 = new Vue({
+            el: '#exp3',
+            data: {
+                picked: ''
+            }
+        })
+
+        var exp4 =new Vue({
+            el:'#exp4',
+            data:{
+                selected:'',
+                options:[
+                    {text:"One", value:'A'},
+                    {text:"Two", value:'B'},
+                    {text:"Three", value:'C'}
+                ]
+            }
+        })
+    </script>
+</body>
+
+</html>

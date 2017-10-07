@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue-for</title>
+    <script src="./../vue.js"></script>
+    <style>
+        p{
+            background-color: #B3BEDB
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <p>普通遍历数组</p>
+        <ul id="exp-1">
+            <li v-for="item in items" :key="item.id">
+                <button>{{item.message}}</button>
+            </li>
+        </ul>
+        <p>（item , index）遍历列表</p>
+        <ul id="exp-2">
+            <li v-for="(item, index) in items">
+                <span>{{item.message}} - 位置是：{{index}}</span>
+            </li>
+        </ul>
+        <p>遍历对象的属性值</p>
+        <ul id="exp-3">
+            <li v-for="item in object">
+                {{item}}
+            </li>
+        </ul>
+
+        <p>键值对形式遍历对象的属性</p>
+        <!-- 在遍历对象时，是按 Object.keys() 的结果遍历，但是不能保证它的结果在不同的 JavaScript 引擎下是一致的。 -->
+        <ul>
+            <li v-for="(val,key) in object">
+                {{key}}:{{val}}
+            </li>
+        </ul>
+
+        <!-- 使用filter 来过滤数组 -->
+        <p>使用filter+计算属性 来过滤数组</p>
+        <ul>
+            <li v-for="num in evenNumbers">{{num}}</li>
+        </ul>
+        <p>使用filter + methods</p>
+        <ul>
+            <li v-for="num in even(numbers)">{{num}}</li>
+        </ul>
+        
+
+    </div>
+
+    <script>
+    var vm  = new Vue({
+        el:'#app',
+        data:{
+            items:[
+                {id:1,message:'你好'},
+                {id:2,message:'首页'},
+                {id:3,message:'关于我们'}
+            ],
+            object:{
+                    id:'1',
+                    name:"小明",
+                    age:18,
+                    phone:'18844445555'
+                },
+            numbers:[
+                1,2,3,4,5,6
+            ]
+        },
+        computed:{
+                    evenNumbers:function(){
+                        return this.numbers.filter(function(num){
+                            return num%2==0;
+                        })
+                    }
+            },
+            methods:{
+                even:function(nums){
+                    return nums.filter(function(it){
+                        return it%2==0;
+                    });
+                }
+            }
+    })
+    </script>
+</body>
+</html>

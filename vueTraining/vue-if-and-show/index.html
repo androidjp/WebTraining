@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Usage Of v-if</title>
+    <script src="./../vue.js"></script>
+    <style>
+        .divcss5 {
+            border: 1px solid #0099FF
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+
+        <button @click="toggleOk">通过这个按钮来改变条件</button>
+
+        <!-- if-else -->
+        <h3 v-if="ok">Yes</h3>
+        <h3 v-else>No</h3>
+
+        <!-- 整组 的 条件渲染 -->
+        <template v-if="ok">
+            <h1>我的Title</h1>
+            <p>我的段落1</p>
+            <p>我的段落2</p>
+        </template>
+
+        <!-- Math.random -->
+        <div v-if="Math.random()>0.5">bigger than half</div>
+        <div v-else>smaller than half</div>
+
+        <!-- else-if -->
+        <div v-if="index===1">A</div>
+        <div v-else-if="index===2">B</div>
+        <div v-else>other</div>
+
+        <!-- demo: login and register -->
+        <div class="divcss5">
+            <h3 v-if="isLogic">登录</h3>
+            <h3 v-else>注册</h3>
+
+            <template v-if="logicByPhone">
+                手机号:<input type="text" placeholder="请输入手机号"><br>
+            </template>
+            <template v-if="logicByEmail">
+                邮箱:<input type="text" placeholder="请输入邮箱"><br>
+            </template>
+
+            密码: <input type="password" placeholder="6为密码">
+
+            <template v-if="!isLogic">
+                再次输入密码: <input type="password" placeholder="6为密码">
+            </template>
+
+            <button v-if="isLogic" @click="login">登录</button>
+            <button v-else @click="register">注册</button>
+
+        </div>
+
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                ok: true,
+                isLogic: true
+                
+            },
+            methods: {
+                toggleOk: function () {
+                    this.ok = !this.ok;
+                },
+                register: function () {
+                    window.alert("register");
+                },
+                login: function () {
+                    window.alert("login");
+                }
+            },
+            computed: {
+                index: function () {
+                    return this.ok ? 1 : 2;
+                },
+                logicByEmail: function(){
+                    return this.isLogic;
+                },
+                logicByPhone: function(){
+                    return !this.isLogic;
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue事件机制</title>
+    <script src="./../vue.js"></script>
+    <style>
+        .myP {
+            background-color: #4F5168;
+            color: azure
+        }
+    </style>
+</head>
+
+<body>
+
+    <p class="myP">普通点击事件处理</p>
+    <div id="exp1">
+
+        <button @click="counter  += 1">加1</button>
+
+        <p>这个按钮被点击了{{counter}}次</p>
+
+        <button v-on:click="showAlert">绑定点击事件的button</button>
+    </div>
+
+    <p class="myP">内联处理器里的方法</p>
+    <div id="exp2">
+
+        <button v-on:click="say('h1')">Say Hi</button>
+        <button @click="say('what')">Say What</button>
+
+
+        <p class="myP">内联中调用原生DOM</p>
+        <button v-on:click="warn('Form connot be submitted yet.', $event)">[调原生事件方法]Submit</button:v-on>
+
+
+    </div>
+    <p class="myP">
+        事件修饰符</p>
+    <div id="exp3">
+        <!-- 阻止单击事件冒泡 -->
+        <a v-on:click,stop="doThis"></a>
+
+        <!-- 提交事件不再重载页面 -->
+        <form v-on:submit.prevent="onSubmit"></form>
+        <!-- 修饰符可以串联 -->
+        <a v-on:click.stop.prevent="doThat"></a>
+        <!-- 只有修饰符 -->
+        <form v-on:submit.prevent></form>
+        <!-- 添加事件侦听器时使用事件捕获模式 -->
+        <div v-on:click.capture="doThis">点点滴滴</div>
+        <!-- 只当事件在该元素本身 (比如不是子元素) 触发时触发回调 -->
+        <div v-on:click.self="doThat">辅导辅导</div>
+
+    </div>
+
+
+    <script>
+        var exp1 = new Vue({
+            el:'#exp1',
+            data:{
+                counter:0
+            },
+            methods:{
+                showAlert:function(event){
+                    alert("Hello "+ this.toString() +"!");
+                    if(event){
+                        alert(event.target.tagName)
+                    }
+                }
+            }
+        })
+
+        var exp2 = new Vue({
+            el:'#exp2',
+            methods:{
+                say:function(msg){
+                    alert(msg);
+                },
+                warn:function(message,event){
+                    if(event) event.preventDefault();///访问原生事件对象
+                    alert(message)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

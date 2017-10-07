@@ -1,12 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Usage-Style</title>
+    <script src="./../vue.js"></script>
+
 </head>
+
 <body>
-    
+    <div id="app">
+        <span v-bind:style="{ background: bgColor ,color:frontColor, fontSize: fSize + 'px' }">绑定了样式的span</span>
+        <br>
+        <span v-bind:style="styleObject">直接绑定obj作为style 的span</span>
+        <!-- <br> -->
+        <!-- 数组形式绑定style -->
+        <!-- <div v-bind:style="[baseStyles, overridingStyles]"></div> -->
+        <br>
+        <!-- 2.3之后提供的 多重值 -->
+        <!-- 这会渲染数组中最后一个被浏览器支持的值。在这个例子中，如果浏览器支持不带浏览器前缀的 flexbox，那么渲染结果会是 display: flex。 -->
+        <div v-bind:style="{display:['-webkit-box','-ms-flexbox','flex']}"></div>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                frontColor: 'white',
+                bgColor: 'red',
+                fSize: 40,
+                styleObject :{
+                    color:'blue',
+                    fontSize:30
+                }
+            }
+        });
+    </script>
 </body>
+
 </html>

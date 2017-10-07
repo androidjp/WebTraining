@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue-for-sample[To-Do list]</title>
+    <script src="./../vue.js"></script>
+    <script src="./vue-component.js"></script>
+
+</head>
+<body>
+    <div id="todo-list-exp">
+
+        <input type="text"
+            v-model="newTodoText"
+            v-on:keyup.enter="addNewTodo"
+            placeholder="Add a todo"
+        >
+
+        <ul>
+            <li is="todo-item"
+                v-for="(todo,index) in todos"
+                v-bind:key="todo.id"
+                v-bind:title="todo.title"
+                v-on:remove="todos.splice(index,1)"
+            >
+
+            </li>
+
+        </ul>
+    </div>
+
+    <script src="./sample1.js"></script>
+    
+</body>
+</html>
