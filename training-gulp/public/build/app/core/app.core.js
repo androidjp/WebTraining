@@ -1,0 +1,1 @@
+function sub(o,s){console.log(o+" - "+s+" = "+(o-s))}module.exports={sub:sub};
