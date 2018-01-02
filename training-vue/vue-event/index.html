@@ -43,7 +43,7 @@
         事件修饰符</p>
     <div id="exp3">
         <!-- 阻止单击事件冒泡 -->
-        <a v-on:click,stop="doThis"></a>
+        <a v-on:click.stop="doThis"></a>
 
         <!-- 提交事件不再重载页面 -->
         <form v-on:submit.prevent="onSubmit"></form>

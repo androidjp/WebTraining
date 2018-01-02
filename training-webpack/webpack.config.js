@@ -54,10 +54,18 @@ module.exports = {
     },
 
     plugins: [
+        /// webpack 自带的插件， 用于加注释到导出的js文件中
         new webpack.BannerPlugin('版权所有，翻版必究'),
+        /// npm install html-webpack-plugin
         new HtmlWebpackPlugin({/// 自动根据设定的HTML模板，创建一个自动引入打包好的JS的最终HTML文件
             template: __dirname + "/app/templates/index.tmpl.html"
-        })
+        }),
+        new webpack.HotModuleReplacementPlugin()//webpack 自带的 热加载插件
     ]
+
+
+    ///npm install --save-dev babel-plugin-react-transform react-transform-hmr
+    /// 然后， 看 .babelrc 文件中的 "env" 块配置，
+    ///现在当你使用React时，可以热加载模块了,每次保存就能在浏览器上看到更新内容
 
 }
