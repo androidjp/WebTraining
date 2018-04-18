@@ -54,8 +54,33 @@ app.post('/register',urlencodedParser, function (req, res) {
     res.end('注册信息： ' + JSON.stringify(reqBody));
 });
 
+app.get('/test', function(req, res) {
+    var jsonRes = [
+        {
+            id:1,
+            title:"学习",
+            duringTime:'1 h',
+            type:0
+        },
+        {
+            id:2,
+            title:"工作",
+            duringTime:'3 h',
+            type:1
+        },
+        {
+            id:2,
+            title:"运动",
+            duringTime:'2 h',
+            type:2
+        }
+    ];
 
-var server = app.listen(8081, function () {
+    return res.json(jsonRes);
+});
+
+
+var server = app.listen(8781, function () {
 
     var host = server.address().address
     var port = server.address().port

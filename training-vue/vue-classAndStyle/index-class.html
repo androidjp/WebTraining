@@ -16,8 +16,10 @@
         <!-- 表示 active属性的更新，取决于 数据属性 isActive是否为true -->
         <div v-bind:class="{active:isActive}"></div>
 
-        <div class="static" v-bind:class="[{active:isActive, 'text-danger':hasError}]"></div>
+        <!-- class 和 vue 的 :class 是可以结合的 -->
+        <div class="static" :class="[{active:isActive, 'text-danger':hasError}]"></div>
 
+        <!-- 直接扔一个 js 对象，作为 class 也行-->
         <div v-bind:class="classObject"></div>
         
         <div v-bind:class="[classObject,extraClassObject]"></div>
@@ -32,7 +34,7 @@
             el: '#app',
             data: {
                 isActive: true,
-                hasError: false,
+                hasError: true,
                 error: {
                     type: 'fatal',
                     msg: 'Error, you are wrong'
