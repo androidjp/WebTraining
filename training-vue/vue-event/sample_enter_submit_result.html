@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./../vue.js"></script>
+    <title>表单结果</title>
+</head>
+
+<body>
+    <div id='res_app'>
+        <h2>这是提交的结果：{{res}}</h2>
+    </div>
+
+    <script language="javascript" type="text/javascript">
+        var loc = location.href;
+        var n1 = loc.length; //地址的总长度
+        var n2 = loc.indexOf("="); //取得=号的位置
+        var id = decodeURI(loc.substr(n2 + 1, n1 - n2)); //从=号后面的内容
+        alert(id);
+
+        var resultVue = new Vue({
+            el: '#res_app',
+            data: {
+                res: 'abc'
+            }
+        });
+
+    
+        resultVue.res = id;
+    </script>
+</body>
+
+</html>

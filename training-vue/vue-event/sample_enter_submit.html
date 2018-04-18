@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue-for</title>
+    <script src="./../vue.js"></script>
+    <style>
+        p {
+            background-color: #B3BEDB
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <p>回车 代替 点击按钮，提交事件</p>
+
+        <div>
+            <input type="password" v-model="psd" placeholder="请输入密码" @keyup.enter="showAlert()">
+            <button name="submit" value="submit" id="btn_submit"  @click="showAlert()">确定跳转</button>
+        </div>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                psd: ''
+            },
+            methods: {
+                showAlert: function (event) {
+                    if (this.psd.length > 0) {
+                        alert("开始跳转! ");
+                        location.href = "./sample_enter_submit_result.html?password=" + this.psd;
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
