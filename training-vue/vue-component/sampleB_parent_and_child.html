@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./../vue.js"></script>
+    <style>
+        .p-bg {
+            background-color: #4F5168;
+            color: azure
+        }
+    </style>
+</head>
+
+<body>
+    <div id='app'>
+        <p class='p-bg'>正常绑定props值的组件</p>
+        <child message='ABB'></child>
+        <child message='BCC'></child>
+
+        <p class='p-bg'>动态Prop</p>
+        <input type="text" placeholder="请输入" v-model="commmonMsg">
+        <child :message='commmonMsg'></child>
+        
+
+        <p class='p-bg'>Parent --> Pass Props --> Child</p>
+
+        <p class='p-bg'>Child --> Emit Event --> Parent</p>
+
+
+    </div>
+
+</body>
+
+<script>
+    Vue.component('child', {
+        // props
+        props: ['message'],
+        template: '<p>带着message=`{{message}}`的child 组件</p>'
+    })
+
+
+
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            commmonMsg:''
+        }
+    })
+</script>
+
+</html>

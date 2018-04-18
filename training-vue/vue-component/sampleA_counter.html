@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>定义Component，组件的data要是一个function</title>
+    <style>
+        p {
+            background-color: #4F5168;
+            color: azure
+        }
+    </style>
+    <script src="./../vue.js"></script>
+</head>
+
+<body>
+
+    <p>定义Component，组件的data要是一个function</p>
+
+    <div id="app">
+        <simple-counter></simple-counter>
+        <simple-counter></simple-counter>
+        <simple-counter></simple-counter>
+
+    </div>
+
+</body>
+
+<script>
+    Vue.component('simple-counter', {
+        template: '<button @click="counter+=1">{{counter}}</button>',
+        data: function () {
+            return {
+                counter: 0
+            }
+        }
+    })
+
+    var app = new Vue({
+        el: '#app'
+    })
+</script>
+
+</html>
