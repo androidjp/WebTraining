@@ -98,6 +98,19 @@
     </div>
 
 
+    <p>修饰符</p>
+    <div id='exp6'>
+        <!-- 在“change”时而非“input”时更新 -->
+        <input type='text' v-model.lazy="msg">
+        <br>你输入的是：{{msg}}
+        <br>
+        你输入的东西会自动变成数字
+        <input v-model.number="age" type="number" placeholder="输入年龄">
+
+        <br>这是会自动过滤前后空格的input：
+        <input v-model.trim="msg">
+
+    </div>
 
 
     <script>
@@ -146,8 +159,16 @@
         var exp5 = new Vue({
             el: '#exp5',
             data: {
-                picked:'a',
-                toggle:'yes',
+                picked: 'a',
+                toggle: 'yes',
+            }
+        })
+
+        var exp6 = new Vue({
+            el: '#exp6',
+            data: {
+                msg:'msg',
+                age:18
             }
         })
     </script>
