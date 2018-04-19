@@ -9,7 +9,7 @@
     <script src="./../vue.js"></script>
     <style>
         .p-bg {
-            background-color: #4F5168;
+            background-color: #58d3cb;
             color: azure
         }
     </style>
@@ -23,7 +23,9 @@
 
         <p class='p-bg'>动态Prop</p>
         <input type="text" placeholder="请输入" v-model="commmonMsg">
-        <child :message='commmonMsg'></child>
+        <child :message='commonMsg'></child>
+        
+        <p class='p-bg'>Prop是单向绑定的：父组件属性变化，子组件会收到，但是反过来就不会。</p>
         
 
         <p class='p-bg'>Parent --> Pass Props --> Child</p>
@@ -48,7 +50,7 @@
     var app = new Vue({
         el: '#app',
         data: {
-            commmonMsg:''
+            commonMsg:''
         }
     })
 </script>
