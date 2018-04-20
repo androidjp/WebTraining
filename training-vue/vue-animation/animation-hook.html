@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Javascript 钩子</title>
+    <script src="./../vue.js"></script>
+    <style>
+        .bg-p {
+            background: cornflowerblue;
+            color: wheat;
+        }
+
+        .fade-enter-active,
+        .fade-leave-active {
+            transition: opacity 1s;
+        }
+
+        .fade-enter,
+        .fade-leave-to {
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>注意看 console.log</h2>
+
+    <div id="app">
+
+        <button @click="show =!show">fade效果</button>
+        <transition name="fade" @before-enter='beforeEnter' @enter='enter' @after-enter='afterEnter' @enter-cancelled='enterCancelled'
+            @before-leave='beforeLeave' @leave='leave' @after-leave='afterLeave' @leave-cancelled='leaveCancelled'>
+            <p v-if="show">看这里</p>
+        </transition>
+
+        <p class="bg-p">看看他的钩子函数跑的是什么顺序</p>
+
+        <ol v-for="item in executeLogs">
+            <li>时刻：{{item.timestamp}}，执行了：{{item.log}}</li>
+        </ol>
+
+
+    </div>
+
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                show: true,
+                executeLogs: [
+                    {
+                        timestamp:1,
+                        log:'null'
+                    }
+                ]
+            },
+            methods: {
+                // 进入中
+                beforeEnter: (el) => {
+                    // el.executeLogs.push({
+                    //     timestamp: new Date().getTime(),
+                    //     log: 'beforeEnter()'
+                    // });
+                    console.log('beforeEnter()');
+                },
+                enter: (el, done) => {
+                    // el.executeLogs.push({
+                    //     timestamp: new Date().getTime(),
+                    //     log: 'enter()'
+                    // });
+                    console.log('enter()');
+                    done();
+                },
+                afterEnter: (el) => {
+                    // el.executeLogs.push({
+                    //     timestamp: new Date().getTime(),
+                    //     log: 'afterEnter()'
+                    // });
+                    console.log('afterEnter()');
+                },
+                enterCancelled: (el) => {
+                    // el.executeLogs.push({
+                    //     timestamp: new Date().getTime(),
+                    //     log: 'beforeEnter()'
+                    // });
+                    console.log('beforeEnter()');
+                },
+
+                // 离开时
+                beforeLeave: (el) => {
+                    // el.executeLogs.push({
+                    //     timestamp: new Date().getTime(),
+                    //     log: 'beforeLeave()'
+                    // });
+                    console.log('beforeLeave()');
+                },
+                leave: (el, done) => {
+                    // el.executeLogs.push({
+                    //     timestamp: new Date().getTime(),
+                    //     log: 'leave()'
+                    // });
+                    console.log('leave()');
+                },
+                afterLeave: (el) => {
+                    // el.executeLogs.push({
+                    //     timestamp: new Date().getTime(),
+                    //     log: 'afterLeave()'
+                    // });
+                    console.log('afterLeave()');
+                },
+                leaveCancelled: (el) => {
+                    // el.executeLogs.push({
+                    //     timestamp: new Date().getTime(),
+                    //     log: 'leaveCancelled()'
+                    // });
+                    console.log('leaveCancelled()');
+                }
+
+            }
+        })
+    </script>
+
+</body>
+
+</html>

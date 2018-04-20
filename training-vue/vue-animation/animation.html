@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue 自带的动画效果</title>
+    <script src="./../vue.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1" rel="stylesheet" type="text/css">
+
+    <style>
+        .bg-p {
+            background: lightcoral;
+            color: antiquewhite
+        }
+
+
+        img {
+            display: block;
+            margin: 10px;
+        }
+
+        .fade-enter-active,
+        .fade-leave-active {
+            transition: opacity .5s;
+        }
+
+        .fade-enter,
+        .fade-leave-to {
+            opacity: 0;
+        }
+
+        /* 整个 enter 的过程 */
+
+        .slide-fade-enter-active {
+            transition: all 2s ease;
+        }
+
+        /* 整个 leave 的过程：赛贝尔曲线 */
+
+        .slide-fade-leave-active {
+            transition: all 1s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+        }
+
+        /* 动画设置 trigger 第一次是做： 不透明度变成0，并且右移 10px的操作 */
+
+        .slide-fade-enter,
+        .slide-fade-leave-to {
+            transform: translateX(20px);
+            opacity: 0;
+        }
+
+        .bounce-enter-active {
+            animation: bounce-in .5s;
+        }
+
+        .bounce-leave-active {
+            animation: bounce-in .5s reverse;
+        }
+
+        @keyframes bounce-in {
+            0% {
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1.5);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id='demo'>
+        <p class='bg-p'>sampleA : fade效果</p>
+
+        <button @click="show =!show">fade效果</button>
+        <transition name="fade" mode="">
+            <p v-if="show">看这里</p>
+        </transition>
+        <img src="./anim_flow.png" alt="">
+
+        <p class='bg-p'>css过渡</p>
+        <button @click="show =!show">slide-fade效果</button>
+        <transition name="slide-fade" mode="">
+            <p v-if="show">看这里</p>
+        </transition>
+
+        <p class='bg-p'>css动画</p>
+        <button @click="show =!show">sample3效果</button>
+        <div style="text-align: center">
+            <transition name="bounce" mode="">
+                <p v-if="show">看这里,很快很快的跑车效果</p>
+            </transition>
+        </div>
+
+        <p class='bg-p'>自定义过渡的类名</p>
+        <button @click="show =!show">使用第三方库animation.css的过滤效果</button>
+        <div style="text-align: center">
+            <transition name="custom-classes-transition" enter-active-class="animated tada" leave-active-class="animated bounceOutRight">
+                <p v-if="show">hello</p>
+            </transition>
+        </div>
+
+    </div>
+
+    <script>
+        new Vue({
+            el: '#demo',
+            data: {
+                show: true
+            }
+        })
+    </script>
+</body>
+
+</html>
