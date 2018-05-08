@@ -6,6 +6,11 @@ console.log("改正后：", floatUtil.add(0.1, 0.2));
 console.log(19.9 * 100);
 console.log("改正后：", floatUtil.multiply(19.9, 100));
 
+console.log(1.335.toFixed(2));
+console.log("改正后：", floatUtil.toFixed(1.335,2));
+
+console.log("======================================");
+console.log("例子：地球上两个地方之间的距离公式")
 console.log("======================================");
 
 ///sample： 地球上两个地方之间的距离公式
