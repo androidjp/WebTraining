@@ -14,3 +14,55 @@
 ---
 
 
+## webpack 学习开始
+---
+### 最开始的config文件：webpack.config.js
+* 首先，这个文件是默认webpack命令会搜索的文件。
+* 基本结构就是配置webpack打包的出入口、插件选择等。
+    * entry
+    * output
+    * plugin
+    * module
+    * devService
+    * mode
+* 例子
+    * 例子一：单个入口，打包单个bundle文件
+        ```
+        module.exports = {
+            entry:'./src/index.js',
+            output: {
+                filename:'bundle.js',
+                path:path.resolve('dist')
+            },
+            module:{},
+            plugins:[],
+            devServer:{
+
+            },
+            mode: 'development'
+        }
+        ```
+
+    * 例子二：两个入口，打包在一块/分别单独打包
+        ```
+        module.exports = {
+            /// 种类一：无关系的，但是要打包在一起的，就写数组的形式
+            // entry:['./src/index.js','./src/index2.js'],
+            /// 种类二：无关系，且不想一起打包的，就分开打包咯
+            entry:{
+                add:'./src/index.js',
+                sub:'./src/index2.js'
+            },
+            output: {
+                filename:'[name].js',
+                path:path.resolve('dist')
+            },
+            module:{},
+            plugins:[],
+            devServer:{
+
+            },
+            mode: 'development'
+        }
+        ```
+
