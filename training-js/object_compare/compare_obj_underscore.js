@@ -7,12 +7,32 @@ let a = {
   age:16,
   address:{
     street:'AAA'
-  }
+  },
+  arr: [
+    {
+      city:'A',
+      code:'A'
+    },
+    {
+      city:'B',
+      code:'B'
+    },
+  ]
 };
 
 let b = {
-  name:'A',
   age:16,
+  arr: [
+    {
+      city:'A',
+      code:'A'
+    },
+    {
+      city:'B',
+      code:'B'
+    },
+  ],
+  name:'A',
   address:{
     street:'AAA'
   }
