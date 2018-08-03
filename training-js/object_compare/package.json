@@ -1,0 +1,14 @@
+{
+  "name": "object_compare",
+  "version": "1.0.0",
+  "description": "- `compare_obj_lodash.js`: 用lodash 的 eq()\r - `compare_obj_underscore.js`: 用underscore 的 eq()\r - `compare_obj_mine.js`: 自己实现的 eq()",
+  "main": "compare_obj_lodash.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "underscore": "^1.9.1"
+  }
+}

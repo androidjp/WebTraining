@@ -115,5 +115,5 @@ let b = {
   address:{
       street:'AAA'
   }
-}
+};
 console.log(eq(a,b));
